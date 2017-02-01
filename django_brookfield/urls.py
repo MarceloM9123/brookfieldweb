@@ -18,7 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^blog/', include('blog.urls')),
+    url(r'^blog/?', include('blog.urls')),
     url(r'^$', include('brookfieldweb.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^burgerantics/$', include('Burger_Antics.urls')),

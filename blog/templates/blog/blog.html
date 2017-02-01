@@ -74,8 +74,9 @@
                             <div class="col-md-12">
                                 {% block content %}
                                     {% for post in object_list %}
-                                        <img src= "{{ post.blog_image.url }}" alt="img">
-                                        <h3>{{ post.date|date:"Y-m-d" }}<a href="/blog/{{post.id}}">  {{ post.title }}</a></h3>
+                                        <img src="{{ post.blog_image.url }}">
+                                        <h3>{{ post.title }}</h3>
+                                        <h5>{{ post.body|linebreaks }}</h5>
                                     {% endfor %}
                                 {% endblock %}
                                 <!-- BEGIN ARTICLE -->
@@ -154,22 +155,47 @@
                                 </article> -->
                                 <!-- END ARTICLE -->
                             </div>
-                            <!-- <div class="col-md-12">
-                                <ul class="pagination">
-                                    <li><a href="javascript:;"><i class="fa fa-long-arrow-left"></i></a>
-                                    </li>
-                                    <li><a href="javascript:;">1</a>
-                                    </li>
-                                    <li class="active"><a href="javascript:;">2</a>
-                                    </li>
-                                    <li><a href="javascript:;">3</a>
-                                    </li>
-                                    <li><a href="javascript:;">4</a>
-                                    </li>
-                                    <li><a href="javascript:;"><i class="fa fa-long-arrow-right"></i></a>
-                                    </li>
-                                </ul>
-                            </div> -->
+                            {% if is_paginated %}
+                            <div class="col-md-12">
+                                <nav>
+                                    <ul class="pagination">
+                                        {% if page_obj.has_previous %}
+                                        <li>
+                                            <a href="?page={{ page_obj.previous_page_number }}">
+                                                <span>Prev</span>
+                                            </a>
+                                        </li>
+                                        {% else %}
+                                        <li class="disabled">
+                                            <a href="#">
+                                                <span>Prev</span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+
+                                        {% for page in paginator.page_range %}
+                                        <li {% if page == page_obj.number %}class="active"{% endif %}>
+                                            <a href="?page={{ page }}"></a>
+                                        </li>
+                                        {% endfor %}
+
+                                        {% if page_obj.has_next %}
+                                        <li>
+                                            <a href="?page={{ page_obj.next_page_number }}">
+                                                <span>Next</span>
+                                            </a>
+                                        </li>
+                                        {% else %}
+                                        <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
+                                            <a href="#">
+                                                <span>Next</span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            {% endif %}
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3 sidebar">

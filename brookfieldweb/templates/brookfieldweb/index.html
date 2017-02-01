@@ -48,7 +48,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html#">
+                    <a class="navbar-brand" href="">
                         <img src='{% static "brookfieldweb/images/rsz_BW_logo.png" %}' alt="logo">
                     </a>
                 </div>
@@ -449,12 +449,12 @@
                         </figure>
                         <div class="post-area">
                             <a class="post-cat" href="/blog/">
-                                <h4>Design</h4>
+                                <h4>Accessibility</h4>
                             </a>
                             <a class="post-title" href="blog-post.html">
-                                <h3>At vero eos et accusamus et iusto odio dignissimos</h3>
+                                <h3>Is your business online?</h3>
                             </a>
-                            <p class="post-content">No one lights a lamp in order to hide it behind the door: the purpose of light is to create more light, to open people’s eyes, to reveal the marvels around ...</p>                            
+                            <p class="post-content">The main purpose of a website it to be seen by MORE people!</p>
                         </div>
                     </article>
 
@@ -463,13 +463,13 @@
                             <img src='{% static "brookfieldweb/images/blog/blog-2.jpg" %}' alt="blog-thumb">
                         </figure>
                         <div class="post-area">
-                            <a class="post-cat" href="">
-                                <h4>Illustration</h4>
+                            <a class="post-cat" href="/blog/">
+                                <h4>Presentation</h4>
                             </a>
                             <a class="post-title" href="blog-post.html">
-                                <h3>At vero eos et accusamus et iusto odio dignissimos</h3>
+                                <h3>First Impressions</h3>
                             </a>
-                            <p class="post-content">No one lights a lamp in order to hide it behind the door: the purpose of light is to create more light, to open people’s eyes, to reveal the marvels around ...</p>
+                            <p class="post-content">New customers or clients will find you online first.  Make sure your website is ready!</p>
                         </div>
                     </article>
 
@@ -478,19 +478,19 @@
                             <img src='{% static "brookfieldweb/images/blog/blog-3.jpg" %}' alt="blog-thumb">
                         </figure>
                         <div class="post-area">
-                            <a class="post-cat" href="">
-                                <h4>Inspiration</h4>
+                            <a class="post-cat" href="/blog/">
+                                <h4>Innovations</h4>
                             </a>
                             <a class="post-title" href="blog-post.html">
-                                <h3>At vero eos et accusamus et iusto odio dignissimos</h3>
+                                <h3>A Brave New World</h3>
                             </a>
-                            <p class="post-content">No one lights a lamp in order to hide it behind the door: the purpose of light is to create more light, to open people’s eyes, to reveal the marvels around ...</p>
+                            <p class="post-content">Let us build you a website that does more for your business!</p>
                         </div>
                     </article>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <a class="btn blog-btn" href="blog.html">See what else is going on...</a>
+                        <a class="btn blog-btn" href="/blog">See what else is going on...</a>
                     </div>
                 </div>
             </section>
@@ -530,24 +530,38 @@
                     <div class="col-md-12 mg-bt-80">
                         <div class="header-content">
                             <h2>Contact Us</h2>
-                            <h3>Let us know if you have any query</h3>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <div class="address">
                             <h2>Get in touch</h2>
-                            <p>Quod cum ita sit, paucae domus stud torpentis exundant, vocali sonu, perflabili tinnitu fidium resultantes. denique pro philosopho cantor et in locum oratoris doctor a</p>
-                            <h2>Team Office</h2>
+                            <!--<p>Quod cum ita sit, paucae domus stud torpentis exundant, vocali sonu, perflabili tinnitu fidium resultantes. denique pro philosopho cantor et in locum oratoris doctor a</p>-->
+                            <!--<h2>Team Office</h2>-->
                             <ul class="office">
-                                <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 1234 Street Name, City Name, United States</li>
+                                <!--<li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 1234 Street Name, City Name, United States</li>-->
                                 <li><i class="fa fa-phone"></i> <strong>Phone:</strong> (123) 456-7890</li>
                                 <li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a></li>
                             </ul>
                         </div>
                     </div>
+                    {% block content %}
                     <div class="col-sm-6 col-md-6">
-                        <form id="contact-form" role="form">                            
-                            <div class="form-group">
+                        <!--<form id="contact-form" role="form">-->
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <table>
+                            {{ form.as_table }}
+
+                            </table>
+
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <input type="submit" value="Submit">
+                                </div>
+                            </div>
+
+                        </form>
+                            <!--<div class="form-group">
                                 <input type="text" class="form-control" id="c_name" placeholder="Name">
                             </div>
                             
@@ -560,10 +574,11 @@
                             </div>
                             <br/>
                             <button type="submit" class="btn">Send Message</button>
-                            <div class="ajax-response"></div>
-                        </form>
+                            <div class="ajax-response"></div>-->
+
+                    {% endblock %}
                     </div>
-                    
+
                 </div>
             </section>
             <!-- END CONTACT -->
@@ -572,13 +587,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="social">
-                            <a href="javascript:;"><i class="fa fa-facebook"></i></a>
-                            <a href="javascript:;"><i class="fa fa-twitter"></i></a>
-                            <a href="javascript:;"><i class="fa fa-pinterest"></i></a>
-                            <a href="javascript:;"><i class="fa fa-dribbble"></i></a>
+                            <a href="http://www.facebook.com/brookfieldweb"><i class="fa fa-facebook"></i></a>
+                            <!--<a href=""><i class="fa fa-twitter"></i></a>-->
+                            <!--<a href=""><i class="fa fa-pinterest"></i></a>-->
+                            <!--<a href=""><i class="fa fa-dribbble"></i></a>-->
                         </div>
                         <p>
-                            © 2015 <a href="http://scripteden.com/">ScriptEden</a> | Images <a href="https://pixabay.com/">Pixabay</a>
+                            © 2015 Images <a href="https://pixabay.com/">Pixabay</a>
                         </p>                        
                     </div>
                 </div>
